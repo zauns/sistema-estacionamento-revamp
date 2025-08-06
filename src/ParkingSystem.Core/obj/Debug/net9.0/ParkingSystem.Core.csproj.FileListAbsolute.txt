@@ -10,3 +10,4 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\refint\ParkingSystem.Core.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.pdb
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ref\ParkingSystem.Core.dll
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.csproj.AssemblyReference.cache

@@ -1192,6 +1192,9 @@
       "ParkingSystem.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.8"
+        },
         "compile": {
           "bin/placeholder/ParkingSystem.Core.dll": {}
         },

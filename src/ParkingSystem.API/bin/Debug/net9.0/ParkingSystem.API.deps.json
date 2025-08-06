@@ -831,6 +831,9 @@
       },
       "System.Threading.Channels/7.0.0": {},
       "ParkingSystem.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.8"
+        },
         "runtime": {
           "ParkingSystem.Core.dll": {
             "assemblyVersion": "1.0.0.0",

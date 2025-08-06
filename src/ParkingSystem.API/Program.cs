@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ParkingSystem.Infrastructure.Data;
+using ParkingSystem.Infrastructure.Services;
+// Adicione os usings para os novos serviços e DTOs se eles estiverem em namespaces diferentes
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<ParkingDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// *** NOVO: Registrar a camada de serviço ***
+builder.Services.AddScoped<IParkingService, ParkingService>();
+
 // Configurar CORS para desenvolvimento
 builder.Services.AddCors(options =>
 {
@@ -42,7 +47,6 @@ if (app.Environment.IsDevelopment())
     using var scope = app.Services.CreateScope();
     var context = scope.ServiceProvider.GetRequiredService<ParkingDbContext>();
     await context.Database.EnsureCreatedAsync();
-    // Ou use: await context.Database.MigrateAsync();
 }
 
 // Configure the HTTP request pipeline.
@@ -52,7 +56,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Parking System API V1");
-        c.RoutePrefix = "swagger"; // Acesse via /swagger
+        c.RoutePrefix = "swagger";
     });
     
     app.UseCors("Development");
