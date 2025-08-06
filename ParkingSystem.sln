@@ -1,19 +1,19 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Core", "ParkingSystem.Core\ParkingSystem.Core.csproj", "{7CD5B6CD-D6FF-4D7A-BC61-4ED77824850D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Core", "src\ParkingSystem.Core\ParkingSystem.Core.csproj", "{7CD5B6CD-D6FF-4D7A-BC61-4ED77824850D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Infrastructure", "ParkingSystem.Infrastructure\ParkingSystem.Infrastructure.csproj", "{58F74321-1F37-46DB-BE89-0BFB11A4217B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Infrastructure", "src\ParkingSystem.Infrastructure\ParkingSystem.Infrastructure.csproj", "{58F74321-1F37-46DB-BE89-0BFB11A4217B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.API", "ParkingSystem.API\ParkingSystem.API.csproj", "{8661D011-E9B8-4EBD-895F-13523B6B7025}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.API", "src\ParkingSystem.API\ParkingSystem.API.csproj", "{8661D011-E9B8-4EBD-895F-13523B6B7025}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Desktop", "ParkingSystem.Desktop\ParkingSystem.Desktop.csproj", "{935A0F87-7E3F-490A-ADFA-0758BE656579}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Desktop", "src\ParkingSystem.Desktop\ParkingSystem.Desktop.csproj", "{935A0F87-7E3F-490A-ADFA-0758BE656579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Web", "ParkingSystem.Web\ParkingSystem.Web.csproj", "{7077139E-6CE7-4825-B1B2-21D17E9B739A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Web", "src\ParkingSystem.Web\ParkingSystem.Web.csproj", "{7077139E-6CE7-4825-B1B2-21D17E9B739A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Tests", "ParkingSystem.Tests\ParkingSystem.Tests.csproj", "{A5B01A52-259B-4C3F-8EAC-54041BC1B495}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Tests", "tests\ParkingSystem.Tests\ParkingSystem.Tests.csproj", "{A5B01A52-259B-4C3F-8EAC-54041BC1B495}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

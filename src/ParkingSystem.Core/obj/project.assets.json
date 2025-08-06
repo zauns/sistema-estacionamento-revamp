@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\ParkingSystem.Core\\ParkingSystem.Core.csproj",
+      "projectUniqueName": "c:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Core\\ParkingSystem.Core.csproj",
       "projectName": "ParkingSystem.Core",
-      "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\ParkingSystem.Core\\ParkingSystem.Core.csproj",
+      "projectPath": "c:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Core\\ParkingSystem.Core.csproj",
       "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\ParkingSystem.Core\\obj\\",
+      "outputPath": "c:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config"

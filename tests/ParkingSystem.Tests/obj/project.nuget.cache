@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KvZuQh+G3Ic=",
+  "dgSpecHash": "Dw0dYn/zelI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj",
+  "projectFilePath": "c:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\João\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\João\\.nuget\\packages\\microsoft.codecoverage\\17.12.0\\microsoft.codecoverage.17.12.0.nupkg.sha512",

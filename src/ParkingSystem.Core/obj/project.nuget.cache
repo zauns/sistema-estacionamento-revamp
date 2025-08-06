@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x9Vm5tRFVfw=",
+  "dgSpecHash": "jyJE70Ww7Y8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\ParkingSystem.Core\\ParkingSystem.Core.csproj",
+  "projectFilePath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Core\\ParkingSystem.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

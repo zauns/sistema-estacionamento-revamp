@@ -18,4 +18,10 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ParkingSystem.Core\ParkingSystem.Core.csproj" />
+    <ProjectReference Include="..\..\src\ParkingSystem.Infrastructure\ParkingSystem.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\ParkingSystem.API\ParkingSystem.API.csproj" />
+  </ItemGroup>
+
 </Project>
