@@ -13,17 +13,30 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
-        <!-- Estilo para cada vaga de estacionamento -->
-        <Style x:Key="ParkingSpotStyle" TargetType="Border">
-            <Setter Property="Background" Value="#4CAF50"/> 
-            <Setter Property="CornerRadius" Value="5"/>
+        <!-- Estilo para o botão que representa a vaga -->
+        <Style x:Key="ParkingSpotButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#388E3C"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="MinHeight" Value="60"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="5" 
+                                BorderBrush="#388E3C" 
+                                BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <!-- Gatilho que muda a cor se a vaga estiver ocupada -->
                 <DataTrigger Binding="{Binding IsOccupied}" Value="True">
-                    <Setter Property="Background" Value="#F44336"/> 
+                    <Setter Property="Background" Value="#F44336"/>
                     <Setter Property="BorderBrush" Value="#D32F2F"/>
                 </DataTrigger>
             </Style.Triggers>
@@ -39,13 +52,9 @@
 
         <!-- Cabeçalho e Botões -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button Content="Atualizar Vagas" 
-                    Command="{Binding LoadParkingSpotsCommand}" 
-                    Padding="10,5" FontSize="14"/>
-            <!-- Botões de Estacionar/Remover virão aqui -->
+            <Button Content="Atualizar Vagas" Command="{Binding LoadParkingSpotsCommand}" Padding="10,5" FontSize="14"/>
         </StackPanel>
 
-        <!-- Grid para exibir as vagas -->
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding ParkingSpots}">
                 <ItemsControl.ItemsPanel>
@@ -55,14 +64,10 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Style="{StaticResource ParkingSpotStyle}" MinHeight="60">
-                            <TextBlock Text="{Binding Number}" 
-                                       Foreground="White" 
-                                       FontSize="16" 
-                                       FontWeight="Bold"
-                                       HorizontalAlignment="Center" 
-                                       VerticalAlignment="Center"/>
-                        </Border>
+                        <Button Style="{StaticResource ParkingSpotButtonStyle}"
+                                Content="{Binding Number}"
+                                Command="{Binding DataContext.ShowSpotDetailsCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                CommandParameter="{Binding}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

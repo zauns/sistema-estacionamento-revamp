@@ -1,8 +1,9 @@
 using ParkingSystem.Desktop.Models;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Json; 
+using System.Net.Http.Json;
 using System.Threading.Tasks;
+using ParkingSystem.Core.DTOs;
 
 namespace ParkingSystem.Desktop.Services
 {
@@ -29,6 +30,37 @@ namespace ParkingSystem.Desktop.Services
                 System.Diagnostics.Debug.WriteLine($"API connection error: {ex.Message}");
                 return new List<ParkingSpotDto>();
             }
+        }
+
+        public async Task<VehicleViewModel?> GetVehicleInSpotAsync(int spotId)
+        {
+            // Endpoint improvisado
+            var response = await _httpClient.GetAsync($"{ApiBaseUrl}/api/vehicles/parked");
+            if (!response.IsSuccessStatusCode) return null;
+
+            var parkedVehicles = await response.Content.ReadFromJsonAsync<List<VehicleViewModel>>();
+            return parkedVehicles?.FirstOrDefault(v => v.ParkingSpotId == spotId);
+        }
+
+        public async Task<VehicleViewModel?> ParkVehicleAsync(ParkVehicleRequest request)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"{ApiBaseUrl}/api/vehicles/park", request);
+            if (!response.IsSuccessStatusCode)
+            {
+                // TODO: Logging de erro
+                return null;
+            }
+            return await response.Content.ReadFromJsonAsync<VehicleViewModel>();
+        }
+
+        public async Task<ParkingTicketViewModel?> RemoveVehicleAsync(string licensePlate)
+        {
+            var response = await _httpClient.PostAsync($"{ApiBaseUrl}/api/vehicles/exit/{licensePlate}", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+            return await response.Content.ReadFromJsonAsync<ParkingTicketViewModel>();
         }
     }
 }

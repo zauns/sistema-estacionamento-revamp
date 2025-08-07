@@ -1,3 +1,4 @@
+// ViewModels/MainViewModel.cs
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ParkingSystem.Desktop.Models;
@@ -6,15 +7,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ParkingSystem.Desktop.Views;
 
 namespace ParkingSystem.Desktop.ViewModels
 {
-    // ObservableObject implementa INotifyPropertyChanged para nós.
     public partial class MainViewModel : ObservableObject
     {
+        
         private readonly IParkingApiService _apiService;
 
-        // A anotação [ObservableProperty] cria a propriedade e notifica a UI sobre mudanças.
         [ObservableProperty]
         private ObservableCollection<ParkingSpotDto> _parkingSpots = new();
 
@@ -29,18 +30,17 @@ namespace ParkingSystem.Desktop.ViewModels
             _apiService = apiService;
         }
 
-        // A anotação [RelayCommand] cria um ICommand que a UI pode chamar.
         [RelayCommand]
         private async Task LoadParkingSpotsAsync()
         {
             IsLoading = true;
             ErrorMessage = string.Empty;
+            ParkingSpots.Clear(); // Limpa para dar feedback visual imediato
             
             var spotsFromApi = await _apiService.GetParkingSpotsAsync();
 
             if (spotsFromApi.Any())
             {
-                ParkingSpots.Clear();
                 foreach (var spot in spotsFromApi)
                 {
                     ParkingSpots.Add(spot);
@@ -52,6 +52,31 @@ namespace ParkingSystem.Desktop.ViewModels
             }
             
             IsLoading = false;
+        }
+
+        [RelayCommand]
+        private void ShowSpotDetails(ParkingSpotDto? spot)
+        {
+            if (spot == null) return;
+
+            SpotDetailWindow? detailWindow = null;
+
+            // Criamos uma função para ser passada ao ViewModel, permitindo que ele feche a janela.
+            Action closeAction = () => detailWindow?.Close();
+            
+            // Passamos a instância do serviço e a ação de fechar para o ViewModel.
+            var detailViewModel = new SpotDetailViewModel(spot, _apiService, closeAction);
+
+            detailWindow = new SpotDetailWindow
+            {
+                DataContext = detailViewModel,
+                Owner = Application.Current.MainWindow
+            };
+
+            detailWindow.ShowDialog();
+
+            // Após o diálogo fechar, atualiza a lista de vagas.
+            LoadParkingSpotsCommand.Execute(null);
         }
     }
 }

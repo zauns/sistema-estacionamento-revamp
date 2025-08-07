@@ -6,6 +6,10 @@
     <ProjectReference Include="..\ParkingSystem.API\ParkingSystem.API.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MudBlazor" Version="8.11.0" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>

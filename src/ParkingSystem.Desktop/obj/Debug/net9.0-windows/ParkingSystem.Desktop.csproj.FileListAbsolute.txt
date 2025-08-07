@@ -69,11 +69,13 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\bin\Debug\net9.0-windows\ParkingSystem.Infrastructure.pdb
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop.csproj.AssemblyReference.cache
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\MainWindow.g.cs
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\Views\SpotDetailWindow.g.cs
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\App.g.cs
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop_MarkupCompile.cache
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop_MarkupCompile.lref
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\MainWindow.baml
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\Views\SpotDetailWindow.baml
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop.g.resources
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop.AssemblyInfoInputs.cache
@@ -86,3 +88,4 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop.pdb
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ParkingSystem.Desktop.genruntimeconfig.cache
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\ref\ParkingSystem.Desktop.dll
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\App.baml

@@ -1,0 +1,58 @@
+<Window x:Class="ParkingSystem.Desktop.Views.SpotDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParkingSystem.Desktop.Views"
+        xmlns:viewModels="clr-namespace:ParkingSystem.Desktop.ViewModels"
+        mc:Ignorable="d"
+        Title="Detalhes da Vaga"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
+        d:DataContext="{d:DesignInstance Type=viewModels:SpotDetailViewModel}">
+    
+    <Border Padding="20" MinWidth="350">
+        <Grid>
+            <!-- Overlay de Carregamento -->
+            <Border Background="#80FFFFFF" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <ProgressBar IsIndeterminate="True" Width="100" Height="20" VerticalAlignment="Center"/>
+            </Border>
+
+            <StackPanel>
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="0,0,0,10">
+                    <Run Text="Vaga:"/>
+                    <Run Text="{Binding Spot.Number}"/>
+                </TextBlock>
+
+                <!-- Visão para VAGA OCUPADA -->
+                <StackPanel Visibility="{Binding Spot.IsOccupied, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Text="Vaga Ocupada" FontSize="18" Foreground="Crimson" Margin="0,0,0,15"/>
+                    
+                    <GroupBox Header="Detalhes do Veículo" FontWeight="Bold">
+                        <StackPanel Margin="5">
+                            <TextBlock><Run Text="Placa: "/><Run Text="{Binding VehicleDetails.LicensePlate}" FontWeight="Normal"/></TextBlock>
+                            <TextBlock><Run Text="Modelo: "/><Run Text="{Binding VehicleDetails.Model}" FontWeight="Normal"/></TextBlock>
+                            <TextBlock><Run Text="Entrada: "/><Run Text="{Binding VehicleDetails.EntryTime, StringFormat='dd/MM/yyyy HH:mm'}" FontWeight="Normal"/></TextBlock>
+                        </StackPanel>
+                    </GroupBox>
+                    
+                    <Button Content="Liberar Vaga" Command="{Binding RemoveVehicleCommand}" Padding="10,5" Background="Crimson" Foreground="White" Margin="0,15,0,0"/>
+                </StackPanel>
+
+                <StackPanel Visibility="{Binding Spot.IsOccupied, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+                    <TextBlock Text="Vaga Disponível" FontSize="18" Foreground="DarkGreen" Margin="0,0,0,15"/>
+                    <TextBlock Text="Placa do Veículo:"/>
+                    <TextBox Text="{Binding NewVehicleLicensePlate}" Margin="0,0,0,10"/>
+                    
+                    <TextBlock Text="Modelo (Opcional):"/>
+                    <TextBox Text="{Binding NewVehicleModel}" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Cor (Opcional):"/>
+                    <TextBox Text="{Binding NewVehicleColor}" Margin="0,0,0,10"/>
+
+                    <Button Content="Estacionar Veículo" Command="{Binding ParkVehicleCommand}" Padding="10,5" Background="DarkGreen" Foreground="White" Margin="0,10,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

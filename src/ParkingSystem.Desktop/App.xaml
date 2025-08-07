@@ -5,5 +5,7 @@
              xmlns:converters="clr-namespace:ParkingSystem.Desktop.Converters">
     <Application.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        
+        <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
     </Application.Resources>
 </Application>
