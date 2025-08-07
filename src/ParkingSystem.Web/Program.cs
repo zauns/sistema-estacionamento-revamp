@@ -1,10 +1,22 @@
 using ParkingSystem.Web.Components;
+using MudBlazor.Services;
+using ParkingSystem.Web.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddMudServices();
+
+builder.Services.AddScoped(sp => new HttpClient 
+{
+    BaseAddress = new Uri("http://localhost:5163")
+});
+// Registra nosso serviço da API
+builder.Services.AddScoped<IParkingApiService, ParkingApiService>();
 
 var app = builder.Build();
 

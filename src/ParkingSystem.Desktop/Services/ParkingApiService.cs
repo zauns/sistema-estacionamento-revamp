@@ -10,7 +10,7 @@ namespace ParkingSystem.Desktop.Services
     public class ParkingApiService : IParkingApiService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiBaseUrl = "http://localhost:5163"; 
+        private const string ApiBaseUrl = "https://localhost:7079"; 
 
         public ParkingApiService(HttpClient httpClient)
         {

@@ -2,14 +2,25 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ParkingSystem.Infrastructure.Data;
 using ParkingSystem.Infrastructure.Services;
-// Adicione os usings para os novos serviços e DTOs se eles estiverem em namespaces diferentes
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    
+    serverOptions.ListenLocalhost(5163); 
+  
+    serverOptions.ListenLocalhost(7079, listenOptions => 
+    {
+        listenOptions.UseHttps(); 
+    });
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Configurar Swagger/OpenAPI
+// Configurar Swagger/OpenAPI 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -21,14 +32,14 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configurar Entity Framework com SQLite
+// Configurar Entity Framework com SQLite 
 builder.Services.AddDbContext<ParkingDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// *** NOVO: Registrar a camada de serviço ***
+
 builder.Services.AddScoped<IParkingService, ParkingService>();
 
-// Configurar CORS para desenvolvimento
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Development", policy =>
@@ -41,7 +52,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Criar/Migrar banco automaticamente no desenvolvimento
+
 if (app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
@@ -58,12 +69,15 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Parking System API V1");
         c.RoutePrefix = "swagger";
     });
-    
-    app.UseCors("Development");
 }
 
 app.UseHttpsRedirection();
+
+
+app.UseCors("Development");
+
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

@@ -1,0 +1,309 @@
+@page "/dashboard" 
+@inject IParkingApiService ApiService
+@inject IJSRuntime JSRuntime
+@using ChartJs.Blazor
+@using ChartJs.Blazor.Common
+@using ChartJs.Blazor.BarChart
+@using ChartJs.Blazor.Common.Axes
+@using ChartJs.Blazor.Common.Axes.Ticks
+@using ChartJs.Blazor.Common.Enums
+@using ParkingSystem.Web.Services
+
+<PageTitle>Dashboard - Sistema de Estacionamento</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    <MudText Typo="Typo.h4" GutterBottom="true">Dashboard de Ocupação</MudText>
+
+    @if (isLoading)
+    {
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+        <MudText Class="mt-2">Carregando dados...</MudText>
+    }
+    else if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <MudAlert Severity="Severity.Error">@errorMessage</MudAlert>
+    }
+    else
+    {
+        <MudGrid Spacing="3">
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="pa-4" Elevation="3">
+                    <MudText Typo="Typo.h6">Vagas Ocupadas</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Primary">@occupiedSpots</MudText>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="pa-4" Elevation="3">
+                    <MudText Typo="Typo.h6">Vagas Disponíveis</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Success">@availableSpots</MudText>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="pa-4" Elevation="3">
+                    <MudText Typo="Typo.h6">Total de Vagas</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Default">@totalSpots</MudText>
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="3">
+                <MudPaper Class="pa-4" Elevation="3">
+                    <MudText Typo="Typo.h6">Taxa de Ocupação</MudText>
+                    <MudText Typo="Typo.h3" Color="Color.Warning">@occupancyRate.ToString("P0")</MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudPaper Class="pa-4" Elevation="3">
+                    <MudText Typo="Typo.h5" Class="mb-4">Entradas de Veículos por Hora (Hoje)</MudText>
+                    
+                    @* Debug Info - Remove após funcionar *@
+                    @if (showDebugInfo)
+                    {
+                        <MudAlert Severity="Severity.Info" Class="mb-3">
+                            <strong>Debug Info:</strong><br/>
+                            Chart Config: @(_barChartConfig != null ? "✓" : "✗")<br/>
+                            Chart Data Loaded: @(chartDataLoaded ? "✓" : "✗")<br/>
+                            Chart Error: @(chartError ? "✓" : "✗")<br/>
+                            Chart.js Available: @(chartJsAvailable ? "✓" : "✗")<br/>
+                            Data Points: @(hourlyDataPoints?.Length ?? 0)
+                        </MudAlert>
+                        <MudButton OnClick="() => showDebugInfo = false" Size="Size.Small" Variant="Variant.Text">
+                            Ocultar Debug
+                        </MudButton>
+                    }
+                    else
+                    {
+                        <MudButton OnClick="() => showDebugInfo = true" Size="Size.Small" Variant="Variant.Text" Class="mb-3">
+                            Mostrar Debug
+                        </MudButton>
+                    }
+
+                    @if (_barChartConfig != null && chartDataLoaded && chartJsAvailable)
+                    {
+                        <div style="position: relative; height: 400px; width: 100%;">
+                            <Chart Config="_barChartConfig" @ref="_barChart" />
+                        </div>
+                    }
+                    else if (chartError)
+                    {
+                        <MudAlert Severity="Severity.Error">
+                            Erro ao carregar o gráfico. Verifique se o Chart.js está disponível.
+                        </MudAlert>
+                    }
+                    else if (!chartJsAvailable)
+                    {
+                        <MudAlert Severity="Severity.Warning">
+                            Chart.js não está disponível. Verifique se os scripts foram carregados corretamente.
+                        </MudAlert>
+                    }
+                    else
+                    {
+                        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                        <MudText Class="mt-2">Carregando gráfico...</MudText>
+                    }
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    }
+</MudContainer>
+
+@code {
+    private int occupiedSpots;
+    private int availableSpots;
+    private int totalSpots;
+    private double occupancyRate;
+
+    private bool isLoading = true;
+    private string? errorMessage;
+
+    private BarConfig? _barChartConfig;
+    private Chart? _barChart;
+    private bool chartDataLoaded = false;
+    private bool chartError = false;
+    private bool chartJsAvailable = false;
+    private bool showDebugInfo = false;
+    private int[]? hourlyDataPoints;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoading = true;
+        try
+        {
+            await LoadStatsAsync();
+            await CheckChartJsAvailability();
+            if (chartJsAvailable)
+            {
+                await SetupChartAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao carregar o dashboard: {ex.Message}";
+            System.Diagnostics.Debug.WriteLine($"Dashboard Error: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(500); // Aguarda scripts carregarem
+            await CheckChartJsAvailability();
+            
+            if (chartJsAvailable && !chartDataLoaded && _barChartConfig == null)
+            {
+                await SetupChartAsync();
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task CheckChartJsAvailability()
+    {
+        try
+        {
+            chartJsAvailable = await JSRuntime.InvokeAsync<bool>("eval", "typeof Chart !== 'undefined'");
+            System.Diagnostics.Debug.WriteLine($"Chart.js Available: {chartJsAvailable}");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error checking Chart.js: {ex.Message}");
+            chartJsAvailable = false;
+        }
+    }
+
+    private async Task LoadStatsAsync()
+    {
+        try
+        {
+            var spots = await ApiService.GetParkingSpotsAsync();
+            if (spots == null || !spots.Any())
+            {
+                errorMessage = "Não foi possível carregar os dados das vagas.";
+            }
+            else
+            {
+                totalSpots = spots.Count;
+                occupiedSpots = spots.Count(s => s.IsOccupied);
+                availableSpots = totalSpots - occupiedSpots;
+                occupancyRate = totalSpots > 0 ? (double)occupiedSpots / totalSpots : 0;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erro ao carregar estatísticas: {ex.Message}";
+            System.Diagnostics.Debug.WriteLine($"LoadStats Error: {ex}");
+        }
+    }
+
+    private async Task SetupChartAsync()
+    {
+        try
+        {
+            System.Diagnostics.Debug.WriteLine("Iniciando setup do gráfico...");
+            
+            _barChartConfig = new BarConfig
+            {
+                Options = new BarOptions
+                {
+                    Responsive = true,
+                    MaintainAspectRatio = false,
+                    Scales = new BarScales
+                    {
+                        XAxes = new List<CartesianAxis>
+                        {
+                            new CategoryAxis()
+                        },
+                        YAxes = new List<CartesianAxis>
+                        {
+                            new LinearCartesianAxis
+                            {
+                                Ticks = new LinearCartesianTicks
+                                {
+                                    BeginAtZero = true,
+                                    Precision = 0
+                                }
+                            }
+                        }
+                    },
+                    Legend = new Legend
+                    {
+                        Display = true,
+                        Position = ChartJs.Blazor.Common.Enums.Position.Top
+                    }
+                }
+            };
+
+            // Labels das horas
+            for (int i = 0; i < 24; i++)
+            {
+                _barChartConfig.Data.Labels.Add($"{i:00}h");
+            }
+
+            // Tenta buscar dados reais da API
+            try
+            {
+                hourlyDataPoints = await ApiService.GetTodayEntriesByHourAsync();
+                System.Diagnostics.Debug.WriteLine($"Dados da API: {hourlyDataPoints?.Length ?? 0} pontos");
+            }
+            catch (Exception apiEx)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro na API: {apiEx.Message}");
+                hourlyDataPoints = null;
+            }
+
+            // Se não conseguiu dados da API ou dados inválidos, usa dados de exemplo
+            if (hourlyDataPoints == null || hourlyDataPoints.Length != 24)
+            {
+                System.Diagnostics.Debug.WriteLine("Usando dados de exemplo...");
+                hourlyDataPoints = GenerateExampleData();
+            }
+
+            var dataset = new BarDataset<int>(hourlyDataPoints)
+            {
+                Label = hourlyDataPoints.Length == 24 && hourlyDataPoints.Any(x => x > 0) ? 
+                       "Nº de Veículos" : "Nº de Veículos (Dados de Exemplo)",
+                BackgroundColor = "rgba(22, 160, 133, 0.6)",
+                BorderColor = "rgba(22, 160, 133, 1)",
+                BorderWidth = 1
+            };
+
+            _barChartConfig.Data.Datasets.Add(dataset);
+            chartDataLoaded = true;
+            
+            System.Diagnostics.Debug.WriteLine("Gráfico configurado com sucesso!");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Erro ao configurar gráfico: {ex}");
+            chartError = true;
+            _barChartConfig = null;
+        }
+    }
+
+    private int[] GenerateExampleData()
+    {
+        var data = new int[24];
+        var random = new Random();
+        
+        for (int i = 0; i < 24; i++)
+        {
+            // Simula padrão realista: mais movimento durante o dia
+            if (i >= 7 && i <= 9) // Pico matinal
+                data[i] = random.Next(3, 8);
+            else if (i >= 11 && i <= 14) // Almoço
+                data[i] = random.Next(2, 6);
+            else if (i >= 17 && i <= 19) // Pico vespertino
+                data[i] = random.Next(4, 9);
+            else if (i >= 6 && i <= 22) // Dia normal
+                data[i] = random.Next(1, 4);
+            else // Madrugada
+                data[i] = random.Next(0, 2);
+        }
+        
+        return data;
+    }
+}
