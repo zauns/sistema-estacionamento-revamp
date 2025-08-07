@@ -16,7 +16,7 @@ O objetivo principal foi transformar uma aplicação básica em um sistema de n�
 - Arquitetura Limpa: Separação clara de responsabilidades entre as camadas de Domínio, Infraestrutura, API e Apresentação.
 
 ### 🛠️ Stack Tecnológica
-- Backend: .NET 8, ASP.NET Core Web API, Entity Framework Core, SignalR
+- Backend: .NET 9, ASP.NET Core Web API, Entity Framework Core, SignalR
 
 - Banco de Dados: SQLite (para desenvolvimento)
 
