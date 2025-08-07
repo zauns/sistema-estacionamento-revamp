@@ -1,6 +1,7 @@
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\bin\Debug\net9.0\ParkingSystem.Core.deps.json
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\bin\Debug\net9.0\ParkingSystem.Core.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\bin\Debug\net9.0\ParkingSystem.Core.pdb
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.csproj.AssemblyReference.cache
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.AssemblyInfoInputs.cache
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.AssemblyInfo.cs
@@ -10,4 +11,3 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\refint\ParkingSystem.Core.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.pdb
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ref\ParkingSystem.Core.dll
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Core\obj\Debug\net9.0\ParkingSystem.Core.csproj.AssemblyReference.cache

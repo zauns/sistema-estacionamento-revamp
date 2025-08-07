@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ParkingSystem.Desktop"
-             StartupUri="MainWindow.xaml">
+             xmlns:converters="clr-namespace:ParkingSystem.Desktop.Converters">
     <Application.Resources>
-         
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Application.Resources>
 </Application>

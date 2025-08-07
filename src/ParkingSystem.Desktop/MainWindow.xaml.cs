@@ -1,23 +1,25 @@
-﻿using System.Text;
+﻿using ParkingSystem.Desktop.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace ParkingSystem.Desktop;
-
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+namespace ParkingSystem.Desktop
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+            
+            // Adicionamos um evento para carregar os dados assim que a janela for carregada
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is MainViewModel viewModel)
+            {
+                // Chama o comando para carregar os dados iniciais
+                await viewModel.LoadParkingSpotsCommand.ExecuteAsync(null);
+            }
+        }
     }
 }
