@@ -26,7 +26,6 @@ namespace ParkingSystem.Infrastructure.Data
                 entity.Property(e => e.Color).HasMaxLength(30);
                 entity.Property(e => e.TotalAmount).HasColumnType("decimal(10,2)");
                 
-                // Índice para performance
                 entity.HasIndex(e => e.LicensePlate);
                 
                 // Relacionamento: Um Vehicle pertence a um ParkingSpot
@@ -36,14 +35,12 @@ namespace ParkingSystem.Infrastructure.Data
                       .OnDelete(DeleteBehavior.Restrict);
             });
 
-            // Configuração da entidade ParkingSpot
             modelBuilder.Entity<ParkingSpot>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Number).IsRequired().HasMaxLength(10);
                 entity.Property(e => e.Type).HasConversion<int>();
                 
-                // Índice único para o número da vaga
                 entity.HasIndex(e => e.Number).IsUnique();
                 
                 // CurrentVehicle é uma propriedade calculada - não mapear no banco
@@ -56,7 +53,6 @@ namespace ParkingSystem.Infrastructure.Data
 
         private static void SeedData(ModelBuilder modelBuilder)
         {
-            // Criar 50 vagas de estacionamento
             var parkingSpots = new List<ParkingSpot>();
             
             for (int i = 1; i <= 50; i++)

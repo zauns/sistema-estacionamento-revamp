@@ -150,7 +150,7 @@
     {
         if (firstRender)
         {
-            await Task.Delay(500); // Aguarda scripts carregarem
+            await Task.Delay(500); 
             await CheckChartJsAvailability();
             
             if (chartJsAvailable && !chartDataLoaded && _barChartConfig == null)
@@ -237,13 +237,11 @@
                 }
             };
 
-            // Labels das horas
             for (int i = 0; i < 24; i++)
             {
                 _barChartConfig.Data.Labels.Add($"{i:00}h");
             }
 
-            // Tenta buscar dados reais da API
             try
             {
                 hourlyDataPoints = await ApiService.GetTodayEntriesByHourAsync();
@@ -255,7 +253,6 @@
                 hourlyDataPoints = null;
             }
 
-            // Se não conseguiu dados da API ou dados inválidos, usa dados de exemplo
             if (hourlyDataPoints == null || hourlyDataPoints.Length != 24)
             {
                 System.Diagnostics.Debug.WriteLine("Usando dados de exemplo...");
@@ -291,16 +288,15 @@
         
         for (int i = 0; i < 24; i++)
         {
-            // Simula padrão realista: mais movimento durante o dia
-            if (i >= 7 && i <= 9) // Pico matinal
+            if (i >= 7 && i <= 9) 
                 data[i] = random.Next(3, 8);
-            else if (i >= 11 && i <= 14) // Almoço
+            else if (i >= 11 && i <= 14) 
                 data[i] = random.Next(2, 6);
-            else if (i >= 17 && i <= 19) // Pico vespertino
+            else if (i >= 17 && i <= 19) 
                 data[i] = random.Next(4, 9);
-            else if (i >= 6 && i <= 22) // Dia normal
+            else if (i >= 6 && i <= 22)
                 data[i] = random.Next(1, 4);
-            else // Madrugada
+            else 
                 data[i] = random.Next(0, 2);
         }
         

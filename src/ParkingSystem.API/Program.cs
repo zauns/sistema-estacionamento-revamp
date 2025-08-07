@@ -22,7 +22,7 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Configurar Swagger/OpenAPI 
+// Configure Swagger/OpenAPI 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {

@@ -9,7 +9,6 @@ namespace ParkingSystem.Desktop
         {
             InitializeComponent();
             
-            // Adicionamos um evento para carregar os dados assim que a janela for carregada
             this.Loaded += MainWindow_Loaded;
         }
 

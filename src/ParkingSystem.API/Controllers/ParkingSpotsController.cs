@@ -1,4 +1,3 @@
-// ParkingSystem.API/Controllers/ParkingSpotsController.cs
 using Microsoft.AspNetCore.Mvc;
 using ParkingSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +29,6 @@ namespace ParkingSystem.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetSpotById(int id)
         {
-            // SOLUÇÃO: Separar as consultas para evitar SQL APPLY
             var spot = await _context.ParkingSpots
                 .Where(s => s.Id == id)
                 .FirstOrDefaultAsync();
@@ -38,7 +36,6 @@ namespace ParkingSystem.API.Controllers
             if (spot == null) 
                 return NotFound();
 
-            // Segunda consulta separada para o veículo atual (se existir)
             var currentVehicle = spot.IsOccupied ? await _context.Vehicles
                 .Where(v => v.ParkingSpotId == id && v.IsParked)
                 .Select(v => new { v.LicensePlate, v.Model, v.EntryTime })
@@ -71,19 +68,15 @@ namespace ParkingSystem.API.Controllers
             });
         }
 
-        // MÉTODO ALTERNATIVO: Obter múltiplas vagas com detalhes
         [HttpGet("detailed")]
         public async Task<IActionResult> GetSpotsWithDetails()
         {
-            // Buscar todas as vagas
             var spots = await _context.ParkingSpots.ToListAsync();
             
-            // Buscar todos os veículos estacionados
             var parkedVehicles = await _context.Vehicles
                 .Where(v => v.IsParked)
                 .ToListAsync();
 
-            // Combinar os dados em memória (compatível com SQLite)
             var result = spots.Select(spot => new
             {
                 spot.Id,
@@ -99,7 +92,6 @@ namespace ParkingSystem.API.Controllers
             return Ok(result);
         }
 
-        // MÉTODO PARA BUSCAR VAGAS DISPONÍVEIS
         [HttpGet("available")]
         public async Task<IActionResult> GetAvailableSpots()
         {
@@ -111,7 +103,6 @@ namespace ParkingSystem.API.Controllers
             return Ok(availableSpots);
         }
 
-        // MÉTODO PARA BUSCAR VAGAS OCUPADAS COM DETALHES
         [HttpGet("occupied")]
         public async Task<IActionResult> GetOccupiedSpots()
         {

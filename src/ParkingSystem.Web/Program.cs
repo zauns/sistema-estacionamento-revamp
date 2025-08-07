@@ -15,7 +15,6 @@ builder.Services.AddScoped(sp => new HttpClient
 {
     BaseAddress = new Uri("http://localhost:5163")
 });
-// Registra nosso serviço da API
 builder.Services.AddScoped<IParkingApiService, ParkingApiService>();
 
 var app = builder.Build();

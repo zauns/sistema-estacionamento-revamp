@@ -35,7 +35,7 @@ namespace ParkingSystem.API.Services
                 LicensePlate = request.LicensePlate.ToUpper(),
                 Model = request.Model ?? "Não informado",
                 Color = request.Color ?? "Não informado",
-                EntryTime = DateTime.UtcNow, // Usar UTC para consistência
+                EntryTime = DateTime.UtcNow, 
                 ParkingSpotId = request.SpotId,
                 IsParked = true
             };
@@ -67,7 +67,6 @@ namespace ParkingSystem.API.Services
             var exitTime = DateTime.UtcNow;
             var timeParked = exitTime - vehicle.EntryTime;
 
-            // Lógica de preço (pode ser movida para um serviço de cálculo no futuro)
             const decimal firstHourRate = 5.00m;
             const decimal additionalHourRate = 3.00m;
             var totalHours = Math.Ceiling(timeParked.TotalHours);

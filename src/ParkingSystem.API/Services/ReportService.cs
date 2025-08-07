@@ -22,8 +22,7 @@ namespace ParkingSystem.API.Services
             var startDate = date.ToDateTime(TimeOnly.MinValue);
             var endDate = startDate.AddDays(1);
 
-            // Busca todos os veículos que saíram nesse dia.
-            // A receita é contada na saída.
+
             var vehiclesExited = await _context.Vehicles
                 .Where(v => v.ExitTime >= startDate && v.ExitTime < endDate)
                 .ToListAsync();

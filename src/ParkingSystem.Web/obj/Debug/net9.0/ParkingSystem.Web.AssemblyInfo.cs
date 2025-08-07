@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ParkingSystem.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3926a15f9c4c1de215c62c8a13f04650b4238f31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4f47cb3c877867f56d5d9c037f0fb053d7433af")]
 [assembly: System.Reflection.AssemblyProductAttribute("ParkingSystem.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ParkingSystem.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

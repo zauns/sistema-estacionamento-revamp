@@ -12,7 +12,6 @@ namespace ParkingSystem.Desktop
 
         public App()
         {
-            // Adiciona tratamento de exceções não tratadas
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
             
             var serviceCollection = new ServiceCollection();
@@ -47,7 +46,7 @@ namespace ParkingSystem.Desktop
 
                 var mainWindow = new MainWindow
                 {
-                    // Pega o MainViewModel do nosso contêiner de DI e o define como DataContext
+                    // Pega o MainViewModel do contêiner de DI e o define como DataContext
                     DataContext = ServiceProvider.GetRequiredService<MainViewModel>()
                 };
                 mainWindow.Show();
