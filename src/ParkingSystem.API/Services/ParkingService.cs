@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-namespace ParkingSystem.Infrastructure.Services
+namespace ParkingSystem.API.Services
 {
     public class ParkingService : IParkingService
     {

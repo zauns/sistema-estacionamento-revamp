@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ParkingSystem.Infrastructure.Data;
-using ParkingSystem.Infrastructure.Services;
+using ParkingSystem.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +38,7 @@ builder.Services.AddDbContext<ParkingDbContext>(options =>
 
 
 builder.Services.AddScoped<IParkingService, ParkingService>();
+builder.Services.AddScoped<IReportService, ReportService>();
 
 
 builder.Services.AddCors(options =>

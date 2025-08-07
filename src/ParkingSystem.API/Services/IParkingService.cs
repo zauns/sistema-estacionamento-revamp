@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ParkingSystem.Core.DTOs;
 
-namespace ParkingSystem.Infrastructure.Services
+namespace ParkingSystem.API.Services
 {
     public interface IParkingService
 {

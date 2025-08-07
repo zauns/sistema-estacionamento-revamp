@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParkingSystem.Core.DTOs;
 using ParkingSystem.Infrastructure.Data;
-using ParkingSystem.Infrastructure.Services;
+using ParkingSystem.API.Services;
 
 namespace ParkingSystem.API.Controllers
 {
