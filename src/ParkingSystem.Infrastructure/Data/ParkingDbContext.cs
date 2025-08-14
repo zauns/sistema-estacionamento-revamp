@@ -4,14 +4,10 @@ using ParkingSystem.Core.Enums;
 
 namespace ParkingSystem.Infrastructure.Data
 {
-    public class ParkingDbContext : DbContext
+    public class ParkingDbContext(DbContextOptions<ParkingDbContext> options) : DbContext(options)
     {
-        public ParkingDbContext(DbContextOptions<ParkingDbContext> options) : base(options)
-        {
-        }
-
-        public DbSet<Vehicle> Vehicles { get; set; }
-        public DbSet<ParkingSpot> ParkingSpots { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; } = null!;
+        public DbSet<ParkingSpot> ParkingSpots { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,9 +21,9 @@ namespace ParkingSystem.Infrastructure.Data
                 entity.Property(e => e.Model).HasMaxLength(50);
                 entity.Property(e => e.Color).HasMaxLength(30);
                 entity.Property(e => e.TotalAmount).HasColumnType("decimal(10,2)");
-                
+
                 entity.HasIndex(e => e.LicensePlate);
-                
+
                 // Relacionamento: Um Vehicle pertence a um ParkingSpot
                 entity.HasOne(v => v.ParkingSpot)
                       .WithMany(p => p.VehicleHistory)
@@ -40,9 +36,9 @@ namespace ParkingSystem.Infrastructure.Data
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Number).IsRequired().HasMaxLength(10);
                 entity.Property(e => e.Type).HasConversion<int>();
-                
+
                 entity.HasIndex(e => e.Number).IsUnique();
-                
+
                 // CurrentVehicle é uma propriedade calculada - não mapear no banco
                 entity.Ignore(e => e.CurrentVehicle);
             });
@@ -54,7 +50,7 @@ namespace ParkingSystem.Infrastructure.Data
         private static void SeedData(ModelBuilder modelBuilder)
         {
             var parkingSpots = new List<ParkingSpot>();
-            
+
             for (int i = 1; i <= 50; i++)
             {
                 var spotType = i switch

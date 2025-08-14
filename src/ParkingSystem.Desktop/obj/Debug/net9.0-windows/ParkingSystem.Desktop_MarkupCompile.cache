@@ -1,20 +1,20 @@
 ﻿ParkingSystem.Desktop
-
+1.0.0.0
 
 winexe
 C#
 .cs
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\
+c:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\obj\Debug\net9.0-windows\
 ParkingSystem.Desktop
 none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\App.xaml
+c:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Desktop\App.xaml
 2-1821001656
 
-12-1965636437
-362-598740080
+14-987850324
+3621862824178
 MainWindow.xaml;Views\SpotDetailWindow.xaml;
 
-False
+True
 
