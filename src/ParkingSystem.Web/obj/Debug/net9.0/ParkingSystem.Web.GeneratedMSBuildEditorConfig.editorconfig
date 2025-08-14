@@ -50,3 +50,15 @@ build_metadata.AdditionalFiles.CssScope = b-zeo35rscll
 [C:/Users/João/Documents/GitHub/sistema-estacionamento-revamp/src/ParkingSystem.Web/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-2isolmi82a
+
+[C:/Users/João/Documents/GitHub/sistema-estacionamento-revamp/src/ParkingSystem.Web/Components/Shared/OccupancyProgressBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcT2NjdXBhbmN5UHJvZ3Jlc3NCYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-jpafmrlsvn
+
+[C:/Users/João/Documents/GitHub/sistema-estacionamento-revamp/src/ParkingSystem.Web/Components/Shared/ParkingMapGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcUGFya2luZ01hcEdyaWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-zhg5rpbhbt
+
+[C:/Users/João/Documents/GitHub/sistema-estacionamento-revamp/src/ParkingSystem.Web/Components/Shared/SpotDetailModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcU3BvdERldGFpbE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-yf2nc3bp4s

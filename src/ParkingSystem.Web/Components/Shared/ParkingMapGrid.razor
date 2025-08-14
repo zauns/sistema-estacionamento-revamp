@@ -1,0 +1,58 @@
+@using ParkingSystem.Web.Models
+@using MudBlazor
+
+<div class="parking-map-container">
+    <MudText Typo="Typo.h6" GutterBottom="true">Mapa do Estacionamento</MudText>
+    
+    @if (ParkingSpots == null || !ParkingSpots.Any())
+    {
+        <MudAlert Severity="Severity.Info">Nenhuma vaga encontrada.</MudAlert>
+    }
+    else
+    {
+        <div class="parking-map-grid">
+            @foreach (var spot in ParkingSpots)
+            {
+                <MudButton Variant="Variant.Filled"
+                           Color="@GetSpotColor(spot)"
+                           Class="parking-spot-button"
+                           Style="@GetSpotStyle(spot)"
+                           Size="Size.Medium"
+                           OnClick="@(() => HandleSpotClick(spot))"
+                           aria-label="@GetSpotAriaLabel(spot)">
+                    @spot.Number
+                </MudButton>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public List<ParkingSpotDto> ParkingSpots { get; set; } = new();
+    [Parameter] public EventCallback<ParkingSpotDto> OnSpotClick { get; set; }
+
+    public Color GetSpotColor(ParkingSpotDto spot)
+    {
+        return spot.IsOccupied ? Color.Error : Color.Success;
+    }
+
+    public string GetSpotAriaLabel(ParkingSpotDto spot)
+    {
+        var status = spot.IsOccupied ? "ocupada" : "livre";
+        return $"Vaga {spot.Number} - {status}";
+    }
+
+    public string GetSpotStyle(ParkingSpotDto spot)
+    {
+        var backgroundColor = spot.IsOccupied ? "#f44336" : "#4caf50";
+        return $"background-color: {backgroundColor} !important; color: white !important;";
+    }
+
+    private async Task HandleSpotClick(ParkingSpotDto spot)
+    {
+        if (OnSpotClick.HasDelegate)
+        {
+            await OnSpotClick.InvokeAsync(spot);
+        }
+    }
+}

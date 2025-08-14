@@ -10,6 +10,5 @@ namespace ParkingSystem.Web.Services
         Task<VehicleViewModel?> GetVehicleInSpotAsync(int spotId);
         Task<VehicleViewModel?> ParkVehicleAsync(ParkVehicleRequest request);
         Task<ParkingTicketViewModel?> RemoveVehicleAsync(string licensePlate);
-        Task<int[]?> GetTodayEntriesByHourAsync();
     }
 }

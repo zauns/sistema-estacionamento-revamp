@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="bunit" Version="1.24.10" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
     <ProjectReference Include="..\..\src\ParkingSystem.Core\ParkingSystem.Core.csproj" />
     <ProjectReference Include="..\..\src\ParkingSystem.Infrastructure\ParkingSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\ParkingSystem.API\ParkingSystem.API.csproj" />
+    <ProjectReference Include="..\..\src\ParkingSystem.Web\ParkingSystem.Web.csproj" />
   </ItemGroup>
 
 </Project>

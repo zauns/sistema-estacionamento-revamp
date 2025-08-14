@@ -1,0 +1,50 @@
+.font-weight-bold {
+    font-weight: 600;
+}
+
+.mud-dialog-content {
+    padding: 16px 24px;
+}
+
+.mud-card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mud-card-content {
+    padding: 16px;
+}
+
+.mud-text-secondary {
+    color: rgba(0,0,0,0.6);
+    font-size: 0.875rem;
+}
+
+.mud-chip {
+    font-weight: 500;
+}
+
+.d-flex.justify-center.align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ml-3 {
+    margin-left: 12px;
+}
+
+.mr-2 {
+    margin-right: 8px;
+}
+
+.mr-3 {
+    margin-right: 12px;
+}
+
+.mb-2 {
+    margin-bottom: 8px;
+}
+
+.mb-4 {
+    margin-bottom: 16px;
+}

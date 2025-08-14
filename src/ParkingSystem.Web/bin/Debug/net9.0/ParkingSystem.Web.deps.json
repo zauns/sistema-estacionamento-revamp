@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v9.0": {
       "ParkingSystem.Web/1.0.0": {
         "dependencies": {
-          "ChartJs.Blazor.Fork": "2.0.2",
           "MudBlazor": "8.11.0",
           "ParkingSystem.API": "1.0.0",
           "ParkingSystem.Core": "1.0.0",
@@ -16,19 +15,6 @@
         },
         "runtime": {
           "ParkingSystem.Web.dll": {}
-        }
-      },
-      "ChartJs.Blazor.Fork/2.0.2": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "9.0.1",
-          "Microsoft.CSharp": "4.7.0",
-          "Newtonsoft.Json": "12.0.3"
-        },
-        "runtime": {
-          "lib/netstandard2.1/ChartJs.Blazor.dll": {
-            "assemblyVersion": "2.0.2.0",
-            "fileVersion": "2.0.2.0"
-          }
         }
       },
       "ClosedXML/0.105.0": {
@@ -155,7 +141,6 @@
           }
         }
       },
-      "Microsoft.CSharp/4.7.0": {},
       "Microsoft.Data.Sqlite.Core/9.0.8": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.1.10"
@@ -391,14 +376,6 @@
           "lib/net9.0/MudBlazor.dll": {
             "assemblyVersion": "8.11.0.0",
             "fileVersion": "8.11.0.0"
-          }
-        }
-      },
-      "Newtonsoft.Json/12.0.3": {
-        "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "12.0.0.0",
-            "fileVersion": "12.0.3.23909"
           }
         }
       },
@@ -825,13 +802,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ChartJs.Blazor.Fork/2.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1aJR2uX3Al1OnWsTOIza2UV4oDZcmspOhliXQ2f9rpAOCuwT0BPbN0eFYT3Fzp5aWU9+9tfyhPlQO48UwpfKVQ==",
-      "path": "chartjs.blazor.fork/2.0.2",
-      "hashPath": "chartjs.blazor.fork.2.0.2.nupkg.sha512"
-    },
     "ClosedXML/0.105.0": {
       "type": "package",
       "serviceable": true,
@@ -915,13 +885,6 @@
       "sha512": "sha512-BwF9sQCKmvu93C/pmKxJjPhF5fFB23MEcgTsGL+7W3wKLYawS4lyFSL5/qh00IJzuADLf+1SmvxMaphbyZYqQQ==",
       "path": "microsoft.aspnetcore.openapi/9.0.8",
       "hashPath": "microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512"
-    },
-    "Microsoft.CSharp/4.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
-      "path": "microsoft.csharp/4.7.0",
-      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
     },
     "Microsoft.Data.Sqlite.Core/9.0.8": {
       "type": "package",
@@ -1083,13 +1046,6 @@
       "sha512": "sha512-WeQTp5l7yYMxFrXlmI51bfIYv4LsFl/ClNruNdJBumG+ods1RkX61gFhlcv3XLmg4EMs5w6a+WqTWCwolYXg7A==",
       "path": "mudblazor/8.11.0",
       "hashPath": "mudblazor.8.11.0.nupkg.sha512"
-    },
-    "Newtonsoft.Json/12.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
-      "path": "newtonsoft.json/12.0.3",
-      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     },
     "QuestPDF/2025.7.0": {
       "type": "package",

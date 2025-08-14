@@ -1,0 +1,30 @@
+<div class="occupancy-progress-container">
+    <div class="progress-bar-background">
+        <div class="progress-bar-fill" style="width: @(ProgressValue)%; background-color: @GetProgressColorHex();"></div>
+    </div>
+    
+    <MudText Typo="Typo.body1" Align="Align.Center" Class="occupancy-text">
+        @OccupiedSpots de @TotalSpots vagas ocupadas (@OccupancyRate.ToString("P0"))
+    </MudText>
+</div>
+
+@code {
+    [Parameter] public int OccupiedSpots { get; set; }
+    [Parameter] public int TotalSpots { get; set; }
+    
+    public double OccupancyRate => TotalSpots > 0 ? (double)OccupiedSpots / TotalSpots : 0;
+    
+    private double ProgressValue => OccupancyRate * 100;
+    
+    private string GetProgressColorHex()
+    {
+        var rate = OccupancyRate;
+        
+        if (rate < 0.5) // Less than 50%
+            return "#4caf50"; // Green
+        else if (rate <= 0.8) // Between 50% and 80%
+            return "#ff9800"; // Orange
+        else // More than 80%
+            return "#f44336"; // Red
+    }
+}

@@ -11,7 +11,6 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\ParkingSystem.Web.runtimeconfig.json
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\ParkingSystem.Web.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\ParkingSystem.Web.pdb
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\ChartJs.Blazor.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Forms.dll
@@ -38,7 +37,6 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\Microsoft.JSInterop.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\Microsoft.OpenApi.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\MudBlazor.dll
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\SQLitePCLRaw.core.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -91,8 +89,6 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\scopedcss\projectbundle\ParkingSystem.Web.bundle.scp.css
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\tzxjg6is5z-n8rndlt7dy.gz
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\0wz98yz2xy-ofbdodmtsc.gz
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\mpzswgcqbu-49ox6r4gbs.gz
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\53yb4zrzki-49ox6r4gbs.gz
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\gql3l9jcve-khy4lop6wu.gz
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\6g5tjgjzir-bqjiyaj88i.gz
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\92tdh6ijtf-c2jlpeoesf.gz
@@ -138,8 +134,6 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\i07yyrsnji-h1s4sie4z3.gz
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\2bucxv0lgd-63fj8s7r0e.gz
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\ydar28z5vt-0j3bgjxly4.gz
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\lijmpnxv9e-a11rneasiz.gz
-C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\hmdw8oo025-a11rneasiz.gz
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\staticwebassets.development.json
@@ -208,3 +202,8 @@ C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\runtimes\win-x86\native\libstdc++-6.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\runtimes\win-x86\native\libwinpthread-1.dll
 C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\bin\Debug\net9.0\runtimes\win-x86\native\qpdf.dll
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\scopedcss\Components\Shared\OccupancyProgressBar.razor.rz.scp.css
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\scopedcss\Components\Shared\ParkingMapGrid.razor.rz.scp.css
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\scopedcss\Components\Shared\SpotDetailModal.razor.rz.scp.css
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\lijmpnxv9e-wax8mua9w4.gz
+C:\Users\João\Documents\GitHub\sistema-estacionamento-revamp\src\ParkingSystem.Web\obj\Debug\net9.0\compressed\hmdw8oo025-wax8mua9w4.gz

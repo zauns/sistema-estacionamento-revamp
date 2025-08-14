@@ -1,0 +1,104 @@
+.parking-map-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.parking-map-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    padding: 16px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.parking-spot-button {
+    aspect-ratio: 1;
+    min-height: 50px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.parking-spot-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+.parking-spot-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .parking-map-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .parking-map-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        padding: 12px;
+    }
+    
+    .parking-spot-button {
+        min-height: 45px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .parking-map-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+        padding: 8px;
+    }
+    
+    .parking-spot-button {
+        min-height: 40px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Accessibility improvements */
+.parking-spot-button:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+/* Color variations for better contrast - More specific selectors */
+::deep .parking-spot-button.mud-button-filled.mud-success {
+    background-color: #4caf50 !important;
+    color: white !important;
+}
+
+::deep .parking-spot-button.mud-button-filled.mud-error {
+    background-color: #f44336 !important;
+    color: white !important;
+}
+
+::deep .parking-spot-button.mud-button-filled.mud-success:hover {
+    background-color: #45a049 !important;
+}
+
+::deep .parking-spot-button.mud-button-filled.mud-error:hover {
+    background-color: #da190b !important;
+}
+
+/* Alternative approach - target by MudBlazor color classes directly */
+::deep .mud-success {
+    background-color: #4caf50 !important;
+    color: white !important;
+}
+
+::deep .mud-error {
+    background-color: #f44336 !important;
+    color: white !important;
+}

@@ -251,14 +251,14 @@
         }
       }
     },
-    "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj": {
+    "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Web\\ParkingSystem.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj",
-        "projectName": "ParkingSystem.Tests",
-        "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Web\\ParkingSystem.Web.csproj",
+        "projectName": "ParkingSystem.Web",
+        "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Web\\ParkingSystem.Web.csproj",
         "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\obj\\",
+        "outputPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -301,9 +301,94 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[8.11.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj",
+        "projectName": "ParkingSystem.Tests",
+        "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\ParkingSystem.Tests.csproj",
+        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\tests\\ParkingSystem.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.API\\ParkingSystem.API.csproj": {
+                "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.API\\ParkingSystem.API.csproj"
+              },
+              "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Core\\ParkingSystem.Core.csproj": {
+                "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Core\\ParkingSystem.Core.csproj"
+              },
+              "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Infrastructure\\ParkingSystem.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Infrastructure\\ParkingSystem.Infrastructure.csproj"
+              },
+              "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Web\\ParkingSystem.Web.csproj": {
+                "projectPath": "C:\\Users\\João\\Documents\\GitHub\\sistema-estacionamento-revamp\\src\\ParkingSystem.Web\\ParkingSystem.Web.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.12.0, )"
+            },
+            "bunit": {
+              "target": "Package",
+              "version": "[1.24.10, )"
             },
             "coverlet.collector": {
               "target": "Package",

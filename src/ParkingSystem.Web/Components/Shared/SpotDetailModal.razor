@@ -1,0 +1,181 @@
+@using ParkingSystem.Web.Models
+@using ParkingSystem.Web.Services
+@using ParkingSystem.Web.Exceptions
+@inject IParkingApiService ApiService
+
+<MudDialog @bind-Visible="IsOpen" Options="DialogOptions">
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="Icons.Material.Filled.LocalParking" Class="mr-3" />
+            Detalhes da Vaga @SelectedSpot?.Number
+        </MudText>
+    </TitleContent>
+    <DialogContent>
+        @if (IsLoading)
+        {
+            <div class="d-flex justify-center align-center" style="min-height: 200px;">
+                <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                <MudText Class="ml-3">Carregando informações...</MudText>
+            </div>
+        }
+        else if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <MudAlert Severity="Severity.Error" Class="mb-4">
+                @ErrorMessage
+            </MudAlert>
+            <div class="d-flex justify-center">
+                <MudButton Variant="Variant.Filled" 
+                          Color="Color.Primary" 
+                          OnClick="LoadVehicleDataAsync"
+                          StartIcon="Icons.Material.Filled.Refresh">
+                    Tentar Novamente
+                </MudButton>
+            </div>
+        }
+        else if (SelectedSpot != null)
+        {
+            <MudCard Class="mb-4">
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" Class="mb-2">Informações da Vaga</MudText>
+                    <MudGrid>
+                        <MudItem xs="6">
+                            <MudText Typo="Typo.body2" Class="mud-text-secondary">Número:</MudText>
+                            <MudText Typo="Typo.body1">@SelectedSpot.Number</MudText>
+                        </MudItem>
+                        <MudItem xs="6">
+                            <MudText Typo="Typo.body2" Class="mud-text-secondary">Status:</MudText>
+                            <MudChip T="string" Color="@(SelectedSpot.IsOccupied ? Color.Error : Color.Success)" 
+                                    Size="Size.Small">
+                                @(SelectedSpot.IsOccupied ? "Ocupada" : "Livre")
+                            </MudChip>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+
+            @if (SelectedSpot.IsOccupied)
+            {
+                @if (VehicleData != null)
+                {
+                    <MudCard>
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6" Class="mb-2">
+                                <MudIcon Icon="Icons.Material.Filled.DirectionsCar" Class="mr-2" />
+                                Informações do Veículo
+                            </MudText>
+                            <MudGrid>
+                                <MudItem xs="6">
+                                    <MudText Typo="Typo.body2" Class="mud-text-secondary">Placa:</MudText>
+                                    <MudText Typo="Typo.body1" Class="font-weight-bold">@VehicleData.LicensePlate</MudText>
+                                </MudItem>
+                                <MudItem xs="6">
+                                    <MudText Typo="Typo.body2" Class="mud-text-secondary">Modelo:</MudText>
+                                    <MudText Typo="Typo.body1">@VehicleData.Model</MudText>
+                                </MudItem>
+                                <MudItem xs="6">
+                                    <MudText Typo="Typo.body2" Class="mud-text-secondary">Cor:</MudText>
+                                    <MudText Typo="Typo.body1">@VehicleData.Color</MudText>
+                                </MudItem>
+                                <MudItem xs="6">
+                                    <MudText Typo="Typo.body2" Class="mud-text-secondary">Entrada:</MudText>
+                                    <MudText Typo="Typo.body1">@VehicleData.EntryTime.ToString("dd/MM/yyyy HH:mm")</MudText>
+                                </MudItem>
+                            </MudGrid>
+                        </MudCardContent>
+                    </MudCard>
+                }
+                else
+                {
+                    <MudAlert Severity="Severity.Warning">
+                        Vaga ocupada, mas não foi possível carregar as informações do veículo.
+                    </MudAlert>
+                }
+            }
+            else
+            {
+                <MudAlert Severity="Severity.Info">
+                    Esta vaga está disponível para estacionamento.
+                </MudAlert>
+            }
+        }
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="CloseModal" 
+                  Variant="Variant.Text" 
+                  Color="Color.Primary">
+            Fechar
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter] public ParkingSpotDto? SelectedSpot { get; set; }
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private VehicleViewModel? VehicleData { get; set; }
+    private bool IsLoading { get; set; }
+    private string? ErrorMessage { get; set; }
+
+    private DialogOptions DialogOptions = new()
+    {
+        MaxWidth = MaxWidth.Small,
+        FullWidth = true,
+        CloseButton = true,
+        CloseOnEscapeKey = true
+    };
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsOpen && SelectedSpot != null && SelectedSpot.IsOccupied)
+        {
+            await LoadVehicleDataAsync();
+        }
+        else if (!IsOpen)
+        {
+            // Reset state when modal is closed
+            VehicleData = null;
+            ErrorMessage = null;
+            IsLoading = false;
+        }
+    }
+
+    private async Task LoadVehicleDataAsync()
+    {
+        if (SelectedSpot == null || !SelectedSpot.IsOccupied) return;
+
+        IsLoading = true;
+        ErrorMessage = null;
+        StateHasChanged();
+
+        try
+        {
+            VehicleData = await ApiService.GetVehicleInSpotAsync(SelectedSpot.Id);
+            if (VehicleData == null)
+            {
+                ErrorMessage = "Não foi possível carregar as informações do veículo.";
+            }
+        }
+        catch (HttpRequestException)
+        {
+            ErrorMessage = "Erro de conexão com a API. Verifique sua conexão de internet.";
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = "Erro inesperado ao carregar dados do veículo.";
+            System.Diagnostics.Debug.WriteLine($"Error loading vehicle data: {ex.Message}");
+        }
+        finally
+        {
+            IsLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task CloseModal()
+    {
+        await IsOpenChanged.InvokeAsync(false);
+        await OnClose.InvokeAsync();
+    }
+}
